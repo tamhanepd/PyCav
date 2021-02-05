@@ -1,3 +1,5 @@
+# Contributor: Neo Dizdar
+
 import torchvision
 import torch
 import torchvision.transforms as T
