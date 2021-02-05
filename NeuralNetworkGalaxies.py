@@ -1,3 +1,4 @@
+# Contributor: Neo Dizdar
 
 import torchvision
 import torch
