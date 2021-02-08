@@ -1,5 +1,3 @@
-# Contributor: Neo Dizdar
-
 import torchvision
 import torch
 import torchvision.transforms as T
@@ -10,6 +8,9 @@ import PIL
 import cv2
 from xml.dom.minidom import parse
 import numpy as np 
+
+os.environ["CUDA_VISIBLE_DEVICES"]=""
+
 model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=False, num_classes=3)
 print(model)
 checkpoint = torch.load('galrcnn.pth')
@@ -91,4 +92,6 @@ def object_detection_api_circles(img_path, threshold=0.5, rect_th=3, text_size=3
     #plt.savefig('RCNNTrialTest.png', bbox_inches= 'tight', dpi=200, pad_inches = -0.1)
     plt.show()
 
-object_detection_api_circles('./data/Galaxies/NNData/NGC5044ASINH0.png',threshold=0.4, rect_th=1, text_th=2, text_size=0.8)
+object_detection_api_circles('../NNData/NGC5044ASINH0.png',threshold=0.4, rect_th=1, text_th=2, text_size=0.8)
+object_detection_api_circles('../NNData/A1664LINEAR.png',threshold=0.4, rect_th=1, text_th=2, text_size=0.8)
+object_detection_api_circles('../NNData/CygnusA1.png',threshold=0.4, rect_th=1, text_th=2, text_size=0.8)

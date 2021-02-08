@@ -1,4 +1,3 @@
-# Contributor: Neo Dizdar
 
 import torchvision
 import torch
@@ -12,6 +11,8 @@ from xml.dom.minidom import parse
 import numpy as np 
 import utils
 from engine import train_one_epoch, evaluate
+
+os.environ["CUDA_VISIBLE_DEVICES"]=""
 
 num_classes = 3  #2 classes (Galaxy, Cavity) + background
 model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=False, progress=True, num_classes=num_classes, pretrained_backbone=True)
@@ -84,6 +85,7 @@ root = r'/home/prathamesh/Dropbox/Work/ML/'   #This has to be the path to the fo
 
 # train on the GPU or on the CPU, if a GPU is not available
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+print(device)
 
 dataset = MarkDataset(root)             #combines the images with the xml files
 dataset_test = MarkDataset(root)
@@ -102,11 +104,11 @@ data_loader_test = torch.utils.data.DataLoader(
 model.to(device)
 params = [p for p in model.parameters() if p.requires_grad]
 
-#Learning Rate and Stochastic Gradient Descent is set and altered here
+# Learning Rate and Stochastic Gradient Descent is set and altered here
 optimizer = torch.optim.SGD(params, lr=0.005, weight_decay=0.0005)
 lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, T_0=1, T_mult=2)
 
-num_epochs = 40                       #Alter this value for varying results
+num_epochs = 20                       #Alter this value for varying results
 
 for epoch in range(num_epochs):
     #train_one_epoch function takes both images and targets to device
@@ -116,7 +118,7 @@ for epoch in range(num_epochs):
     lr_scheduler.step()
 
     #evaluate on the test dataset    
-    evaluate(model, data_loader_test, device=device)    
+    evaluate(model, data_loader_test, device=torch.device('cpu'))    
     
     print('')
     print('==================================================')
