@@ -80,7 +80,7 @@ class MarkDataset(torch.utils.data.Dataset):
         return len(self.imgs)
 
 
-root = r'/home/prathamesh/Dropbox/Work/ML/'   #This has to be the path to the folder where NNData and Annotations are stored
+root = os.getcwd()   #This has to be the path to the folder where NNData and Annotations are stored
 #testroot = r'Testing Dataset Path'
 
 # train on the GPU or on the CPU, if a GPU is not available
