@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<annotation>
+  <folder/>
+  <filename>A1835ASINH0.png</filename>
+  <database/>
+  <annotation/>
+  <image/>
+  <size>
+    <height>1078</height>
+    <width>1940</width>
+    <depth>3</depth>
+  </size>
+  <segmented/>
+  <object>
+    <name>Galaxy</name>
+    <pose/>
+    <truncated/>
+    <difficult/>
+    <bndbox>
+      <xmin>770.00</xmin>
+      <ymin>829.00</ymin>
+      <xmax>932.00</xmax>
+      <ymax>944.00</ymax>
+    </bndbox>
+  </object>
+  <object>
+    <name>Cavity</name>
+    <pose/>
+    <truncated/>
+    <difficult/>
+    <bndbox>
+      <xmin>842.00</xmin>
+      <ymin>875.00</ymin>
+      <xmax>856.00</xmax>
+      <ymax>887.00</ymax>
+    </bndbox>
+  </object>
+</annotation>
